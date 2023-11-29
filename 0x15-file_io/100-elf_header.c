@@ -35,3 +35,30 @@ void check_elf(unsigned char *e_ident)
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
+		}
+	}
+}
+
+/**
+ * print_magic - Prints the magic numbers of an ELF header.
+ * @e_ident: a pointer to an array containing the ELF magic numbers.
+ */
+void print_class(unsigned char *e_ident)
+{
+	printf(" Class:
+	
+	switch (e_ident[EI_CLASS])
+	{
+	case ELFCLASSNONE:
+		printf("none\n");
+		break;
+	case ELFCLASS32:
+		printf("ELF32\n");
+		break;
+	case ELFCLASS64:
+		printf("ELF64\n");
+		break;
+	default:
+		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
